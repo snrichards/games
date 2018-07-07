@@ -1,0 +1,19 @@
+{
+  "name": "games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snrichards/games.git"
+  },
+  "author": "Steve Richards",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snrichards/games/issues"
+  },
+  "homepage": "https://github.com/snrichards/games#readme"
+}
