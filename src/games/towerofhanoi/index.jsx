@@ -9,17 +9,22 @@ class TowerOfHanoi extends Component {
   onTowerClick = (e) => {
     const { currentSelectedTower: fromTower } = this.state;
 
+    // No tower currently selected
     if (!fromTower) {
       const towerName = e.target.getAttribute('data-tower');
       const { [towerName]: clickedTower } = this.state;
+
+      // Clicked tower has blocks, set top block as selected
       if (clickedTower.length) {
         this.setState({ currentSelectedTower: e.target.getAttribute('data-tower') });
       }
+
       return;
     }
 
     const toTower = e.target.getAttribute('data-tower');
 
+    // Clicked tower is already selected, deselect tower
     if (fromTower === toTower) {
       this.setState({ currentSelectedTower: null });
       return;
@@ -37,8 +42,9 @@ class TowerOfHanoi extends Component {
         this.checkForWin,
       );
     }
+    // TODO: show error if invalid move
 
-    // error if invalid move
+    // deselect tower after a move has been made
     this.setState({ currentSelectedTower: null });
   };
 
