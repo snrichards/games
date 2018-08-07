@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
-const FourOhFour = () => <h1>404</h1>;
+const FourOhFour = () => (
+  <Fragment>
+    <h1>404</h1>
+    <Link to="/">Home</Link>
+  </Fragment>
+);
 
 export default FourOhFour;
