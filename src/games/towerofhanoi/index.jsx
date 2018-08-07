@@ -70,30 +70,19 @@ class TowerOfHanoi extends Component {
         <h1>Tower Of Hanoi</h1>
         <p>{numMoves}</p>
         <Towers>
-          <Li>
-            <Tower
-              blocks={tower1}
-              onTowerClick={this.onTowerClick}
-              towerId="tower1"
-              isSelected={currentSelectedTower === 'tower1'}
-            />
-          </Li>
-          <Li>
-            <Tower
-              blocks={tower2}
-              onTowerClick={this.onTowerClick}
-              towerId="tower2"
-              isSelected={currentSelectedTower === 'tower2'}
-            />
-          </Li>
-          <Li>
-            <Tower
-              blocks={tower3}
-              onTowerClick={this.onTowerClick}
-              towerId="tower3"
-              isSelected={currentSelectedTower === 'tower3'}
-            />
-          </Li>
+          {[tower1, tower2, tower3].map((currTower, i) => {
+            const towerName = `tower${i + 1}`;
+            return (
+              <Li key={towerName}>
+                <Tower
+                  blocks={currTower}
+                  isSelected={currentSelectedTower === towerName}
+                  onTowerClick={this.onTowerClick}
+                  towerId={towerName}
+                />
+              </Li>
+            );
+          })}
         </Towers>
         <button
           type="button"
