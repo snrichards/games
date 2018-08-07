@@ -43,14 +43,24 @@ class TowerOfHanoi extends Component {
   };
 
   checkForWin = () => {
-    const { tower3 } = this.state;
+    const { tower1, tower2, tower3, numMoves } = this.state;
 
     if (tower3.length === 3) {
       alert('you win!');
-      this.setState(getInitialGameState());
       window.localStorage.removeItem('towers');
+      this.setState(getInitialGameState());
+    } else {
+      // save to local storage after each move
+      window.localStorage.setItem(
+        'towers',
+        JSON.stringify({
+          tower1,
+          tower2,
+          tower3,
+          numMoves,
+        }),
+      );
     }
-    // set local storage
   };
 
   render() {
@@ -85,7 +95,13 @@ class TowerOfHanoi extends Component {
             />
           </Li>
         </Towers>
-        <button type="button" onClick={() => this.setState(getInitialGameState())}>
+        <button
+          type="button"
+          onClick={() => {
+            window.localStorage.removeItem('towers');
+            this.setState(getInitialGameState());
+          }}
+        >
           reset
         </button>
       </section>
